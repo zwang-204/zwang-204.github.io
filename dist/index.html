@@ -47,7 +47,7 @@
   }
   .save-button {
     position: absolute;
-    top: 00%;
+    top: 0%;
     z-index: 10; /* Ensure it sits above the images */
     background-color: black;
     color: white;
@@ -56,6 +56,17 @@
     font-size: 16px;
     cursor: pointer;
     white-space: pre; /* To respect newline characters in the button text */
+    transition: background-color 0.3s; /* Smooth transition for the background color change */
+  }
+
+  /* Slightly darken the button on hover */
+  .save-button:hover {
+    background-color: #333; /* Darker shade of black */
+  }
+
+  /* Further darken the button when clicked */
+  .save-button:active {
+    background-color: #1a1a1a; /* Even darker shade of black */
   }
 </style>
 </head>
