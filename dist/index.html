@@ -22,7 +22,7 @@
     justify-content: center;
     align-items: center;
   }
-  .image1, .image2, .dirt {
+  .image1, .image2, .image3, .dirt {
     position: absolute;
   }
   .image1 {
@@ -36,6 +36,12 @@
     height: auto; /* Maintain aspect ratio */
     top: 10%; /* Custom position */
     left: 0%; /* Custom position */
+  }
+  .image3 {
+    width: 100%; /* Custom width */
+    height: auto; /* Maintain aspect ratio */
+    top: -31%; /* Custom position */
+    left: -30%; /* Custom position */
   }
   .dirt {
     background-color: brown;
@@ -73,8 +79,9 @@
 <body>
 
 <div class="image-container">
-  <img src="./imgs/cat.png" alt="First Image" class="image1" id="image1">
-  <img src="./imgs/well.png" alt="Second Image" class="image2" id="image2">
+  <img src="./imgs/cat.png" alt="Cat" class="image1" id="image1">
+  <img src="./imgs/well.png" alt="Well" class="image2" id="image2">
+  <img src="./imgs/flower.png" alt="Flower" class="image3" id="image3">
   <div class="dirt" id="dirt"></div>
   <button class="save-button" id="saveButton">Save the cat <br> 0/10000</button>
 </div>
