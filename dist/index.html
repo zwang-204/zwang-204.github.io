@@ -4,86 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Save The CAT</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-  }
-  .image-container {
-    position: relative;
-    /* Set the size of the container if needed */
-    width: 500px; /* Example width */
-    height: 300px; /* Example height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .image1, .image2, .image3, .dirt {
-    position: absolute;
-  }
-  .image1 {
-    width: 20%; /* Custom width */
-    height: auto; /* Maintain aspect ratio */
-    top: 85%; /* Custom position */
-    left: 40%; /* Custom position */
-  }
-  .image2 {
-    width: 100%; /* Custom width */
-    height: auto; /* Maintain aspect ratio */
-    top: 10%; /* Custom position */
-    left: 0%; /* Custom position */
-  }
-  .image3 {
-    width: 100%; /* Custom width */
-    height: auto; /* Maintain aspect ratio */
-    top: -31%; /* Custom position */
-    left: -30%; /* Custom position */
-  }
-  .dirt {
-    background-color: brown;
-    bottom: -15%; /* Adjust this value to control the vertical position */
-    left: 39%;
-    width: 21%; /* Match the width of the well */
-    height: 0%; /* Control the height of the dirt */
-    z-index: 5; /* Ensure it's above the well but below the cat */
-  }
-  .save-button {
-    position: absolute;
-    top: 0%;
-    z-index: 10; /* Ensure it sits above the images */
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    white-space: pre; /* To respect newline characters in the button text */
-    transition: background-color 0.3s; /* Smooth transition for the background color change */
-  }
-
-  /* Slightly darken the button on hover */
-  .save-button:hover {
-    background-color: #333; /* Darker shade of black */
-  }
-
-  /* Further darken the button when clicked */
-  .save-button:active {
-    background-color: #1a1a1a; /* Even darker shade of black */
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="image-container">
   <img src="./imgs/cat.png" alt="Cat" class="image1" id="image1">
   <img src="./imgs/well.png" alt="Well" class="image2" id="image2">
-  <img src="./imgs/flower.png" alt="Flower" class="image3" id="image3">
+  <img src="./imgs/red flower.png" alt="Flower" class="image3" id="image3">
+  <img src="./imgs/orange flower.png" alt="Flower" class="image4" id="image4">
   <div class="dirt" id="dirt"></div>
   <button class="save-button" id="saveButton">Save the cat <br> 0/10000</button>
+  <button class="feed-button" id="feedButton">Feed him</button>
 </div>
 <script src="./bundle.js"></script>
 

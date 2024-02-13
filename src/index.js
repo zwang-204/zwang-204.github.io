@@ -16,16 +16,6 @@ const db = getDatabase();
 const dbRef = ref(db);
 let totalRescue = 0;
 
-// get(child(dbRef, `cat/total` )).then((total) => {
-//   if (total.exists()) {
-//     totalRescue = total.val();
-//   } else {
-//     console.log("No data available");
-//   }
-// }).catch((error) => {
-//   console.error(error);
-// });
-
 const totalCount = ref(db, 'cat/total');
 onValue(totalCount, (_total) => {
   totalRescue = _total.val();
@@ -37,11 +27,28 @@ onValue(saveCount, (_save) => {
   updatePage(save);
 });
 
+const hungryBool = ref(db, 'cat/hungry');
+onValue(hungryBool, (_hungry) => {
+  const hungry = _hungry.val();
+  var catImg = document.getElementById('image1');
+
+  if (hungry) {
+    catImg.src = "./imgs/hungry.png";
+    catImg.alt = "Hungry Cat";
+  } else {
+    catImg.src = "./imgs/cat.png";
+    catImg.alt = "Cat";
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const saveButton = document.getElementById('saveButton');
   saveButton.addEventListener('click', () => {
     writeData(1);
+  });
+  const feedButton = document.getElementById('feedButton');
+  feedButton.addEventListener('click', () => {
+    makeCatHungry(false);
   });
 });
 
@@ -58,12 +65,21 @@ function updatePage(numOfSaves) {
 
   cat.style.top = catPercent + "%";
   dirt.style.height = dirtPercent + "%";
+
+  if(numOfSaves % 23 == 0 || numOfSaves & 37 == 0){
+    makeCatHungry(true);
+  }
 }
 
 function writeData(num){
-  const dbRef = ref(getDatabase());
   const updates = {};
   updates[`cat/save`] = increment(num);
+  update(dbRef, updates);
+}
+
+function makeCatHungry(isHungry){
+  const updates = {};
+  updates[`cat/hungry`] = isHungry;
   update(dbRef, updates);
 }
 
