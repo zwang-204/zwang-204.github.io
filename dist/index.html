@@ -3,21 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Save The CAT</title>
-<link rel="stylesheet" href="style.css">
+<title>Centered Canvas Thoughts</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(235, 235, 235);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #canvasContainer {
+    position: relative;
+    width: 400px; /* Display size */
+    height: 400px; /* Display size */
+    margin-bottom: 20px;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated; /* Keeps the pixels sharp */
+    background-color: rgb(255, 255, 255);
+  }
+  #hoverText {
+    width: max-content;
+    max-width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background-color: #fff;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 14px;
+    color: #333;
+    white-space: normal; /* Ensures the text stays in a single line */
+    transition: all 0.3s ease;
+    z-index: 10; /* Ensures the text is above other elements */
+  }
+  #textInput {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #a2a2a2; /* Matching the button color */
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    outline: none; /* Removes the default focus outline */
+    transition: border-color 0.3s ease;
+  }
+  #textInput::placeholder {
+    color: #aaa; /* Lighter text for the placeholder */
+    font-style: italic;
+  }
+  #textInput:focus {
+    border-color: #768487; /* Darker green to match the button hover state */
+  }
+  #enterButton {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #8b8b8b; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #enterButton:hover {
+    background-color: #768487; /* Darker green background */
+  }
+  #enterButton:focus {
+    outline: none; /* Removes the outline */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1); /* Adds a subtle focus effect */
+  }
+</style>
 </head>
 <body>
 
-<div class="image-container">
-  <img src="./imgs/cat.png" alt="Cat" class="image1" id="image1">
-  <img src="./imgs/well.png" alt="Well" class="image2" id="image2">
-  <img src="./imgs/red flower.png" alt="Flower" class="image3" id="image3">
-  <img src="./imgs/orange flower.png" alt="Flower" class="image4" id="image4">
-  <div class="dirt" id="dirt"></div>
-  <button class="save-button" id="saveButton">Save the cat <br> 0/10000</button>
-  <button class="feed-button" id="feedButton">Feed him</button>
+<div id="canvasContainer">
+  <canvas id="myCanvas" width="100" height="100"></canvas> <!-- Logical size -->
+  <div id="hoverText">Hover over a pixel</div>
 </div>
-<script src="./bundle.js"></script>
+<input type="text" id="textInput" placeholder="Color your words">
+<button id="enterButton">Enter</button>
+
+<script src="bundle.js"> </script>
 
 </body>
 </html>
